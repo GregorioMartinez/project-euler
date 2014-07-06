@@ -7,50 +7,29 @@
  * What is the largest prime factor of the number 600851475143 ?
  */
 
- 
- var number = 600851475143;
- var getFactors = function(){
- 	"use strict";
+var getLargestPrimeFactor = function(){
+	"use strict";
 
- 	var factors = [];
+	var number = 600851475143;
+	var factor = 2;
+	var largestPrimeFactor = 1;
 
- 	for (var index = 1; index < number; index++) {
- 		
- 		if (number % index === 0 && index != 1){
- 			factors.push(index);
- 		}
- 	}
+	while(number > 1){
+		if (number % factor === 0){
 
- 	return factors;
- };
+			if (factor > largestPrimeFactor){
+				largestPrimeFactor = factor;
+			}
 
- var largestPrime = function(factors){
+			number /= factor;
+			factor = 2;
+		}
+		else{
+			factor++;
+		}
+	}
 
- 	var hold  = 0,
- 	prime = 0;
+	return largestPrimeFactor;
+};
 
-
- 	for (var index = factors.length - 1; index >= 0; index--) {
- 		isPrime = true;
- 		count = 0;
-
- 		while(isPrime === true){
-
- 			if (factors[index] % factors[count] === 0){
- 				isPrime = false;
- 			}
-
- 			hold = factors[count];
- 			if(hold > prime){
- 				prime = hold;
- 			}
-
- 			count++;
-
- 		}
- 	}
-
- 	return prime;
- };
-
- console.log(getFactors());
+console.log(getLargestPrimeFactor());
