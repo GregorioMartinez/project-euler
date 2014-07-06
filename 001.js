@@ -8,13 +8,14 @@
  */
 
 
- var getMultiplesSum = function(input){
+ var getMultiplesSum = function(){
  	"use strict";
 
-	var index   = 0,
+	var ceiling = 1000,
+		index   = 0,
 		sum     = 0;
 
-	while(index < input){
+	while(index < ceiling){
 		if (index % 3 === 0){
 			sum += index;
 		}
